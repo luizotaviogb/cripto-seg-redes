@@ -1,6 +1,7 @@
 import sys
 import string
 import random
+import os
 
 
 class Cryptography:
@@ -10,104 +11,86 @@ class Cryptography:
         arquivo2 = open("arquivoSaida.txt", "w+")
 
         tam = 26
-        print (tam)
         key = random.sample(string.ascii_uppercase, tam)
         key2=[]
         key1=[]
-        for i in range(13,25):
+        for i in range(13,26):
             key2.append(key[i])
-        for i in range(0,12):
+        for i in range(0,13):
             key1.append(key[i])
 
-        print(key1)
-        print(key2)
-
-
-        print(key)
         for line in ref_arquivo:
 
             for i in list(line):
                 i = i.upper()
+                j=0
+                contador = 0
+                x = 0
+                while contador != 1:
+                    if i == key2[j]:
+                        arquivo2.write(key1[j])
+                        contador = 1
+                    elif i == key1[j]:
+                        arquivo2.write(key2[j])
+                        contador = 1
+                    elif j == 12:
+                        arquivo2.write(i.upper())
+                        contador=1
+                    j = j+1
+        print("\n" * 130)
+        for letter in key:
+            print(letter, end ='')
 
-                if i == key1:
-                    arquivo2.write(key2)
-                elif i == key2:
-                    arquivo2.write(key1)
-                else:
-                    arquivo2.write(i.upper())
-
-
-
-
-                # if i == key[0]:
-                #     arquivo2.write(key[1])
-                # elif i == key[2]:
-                #     arquivo2.write(key[3])
-                # elif i == key[4]:
-                #     arquivo2.write(key[5])
-                # elif i == key[6]:
-                #     arquivo2.write(key[7])
-                # elif i == key[8]:
-                #     arquivo2.write(key[9])
-                # elif i == key[10]:
-                #     arquivo2.write(key[11])
-                # elif i == key[1]:
-                #     arquivo2.write(key[0])
-                # elif i == key[3]:
-                #     arquivo2.write(key[2])
-                # elif i == key[5]:
-                #     arquivo2.write(key[4])
-                # elif i == key[7]:
-                #     arquivo2.write(key[6])
-                # elif i == key[9]:
-                #     arquivo2.write(key[8])
-                # elif i == key[11]:
-                #     arquivo2.write(key[10])
-                # else:
-                #     arquivo2.write(i.upper())
+        print ("\n")
 
     def decrypt(self,arquivo,key):
         ref_arquivo = open(arquivo, "r")
         arquivo2 = open("arquivoOriginal.txt", "w+")
+
+        tam = 26
+        key2 = []
+        key1 = []
+        for i in range(13, 26):
+            key2.append(key[i])
+        for i in range(0, 13):
+            key1.append(key[i])
+
         for line in ref_arquivo:
 
             for i in list(line):
                 i = i.upper()
-                if i == key[0]:
-                    arquivo2.write(key[1])
-                elif i == key[2]:
-                    arquivo2.write(key[3])
-                elif i == key[4]:
-                    arquivo2.write(key[5])
-                elif i == key[6]:
-                    arquivo2.write(key[7])
-                elif i == key[8]:
-                    arquivo2.write(key[9])
-                elif i == key[10]:
-                    arquivo2.write(key[11])
-                elif i == key[1]:
-                    arquivo2.write(key[0])
-                elif i == key[3]:
-                    arquivo2.write(key[2])
-                elif i == key[5]:
-                    arquivo2.write(key[4])
-                elif i == key[7]:
-                    arquivo2.write(key[6])
-                elif i == key[9]:
-                    arquivo2.write(key[8])
-                elif i == key[11]:
-                    arquivo2.write(key[10])
-                else:
-                    arquivo2.write(i.upper())
-
-
+                j = 0
+                contador = 0
+                x = 0
+                while contador != 1:
+                    if i == key2[j]:
+                        arquivo2.write(key1[j])
+                        contador = 1
+                    elif i == key1[j]:
+                        arquivo2.write(key2[j])
+                        contador = 1
+                    elif j == 12:
+                        arquivo2.write(i.upper())
+                        contador = 1
+                    j = j + 1
+        print("\n" * 130)
 class Main:
 
-    string_arquivo = "arquivoEntrada.txt"
-    cripto= Cryptography()
-    cripto.encrypt(string_arquivo)
-    string_arquivo2="arquivoSaida.txt"
-    #cripto.decrypt(string_arquivo2,"FRCMDGXSPOYI")
+    opcao = 1
+    while opcao != 0:
+
+        opcao = input ('0- Sair \n 1- Criptografar \n 2-Decriptografar \n')
+        string_arquivo = "arquivoEntrada.txt"
+        cripto = Cryptography()
+        string_arquivo2 = "arquivoSaida.txt"
+
+        if opcao == '1':
+            print(cripto.encrypt(string_arquivo))
+        elif opcao == '2':
+            key = input ('Informe a chave\n')
+            cripto.decrypt(string_arquivo2, key)
+        elif opcao == '0':
+            sys.exit()
 
 
 
