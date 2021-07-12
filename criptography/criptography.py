@@ -52,6 +52,7 @@ def encrypt():
     #return send_file(path_or_file="arquivoSaida.txt")
     return send_file(path_or_file="arquivoSaida.txt"), chave
 
+
 @app.route('/decrypt/', methods=['POST'])
 def decrypt(self,request):
     key = request.data['key']
