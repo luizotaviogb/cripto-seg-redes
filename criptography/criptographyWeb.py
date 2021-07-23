@@ -5,10 +5,13 @@ import os
 import criptography
 from flask import Flask, request, make_response, Response, send_file, jsonify, json
 from werkzeug.utils import secure_filename
+from flask_cors import CORS, cross_origin
 
 app = Flask (__name__)
+cors = CORS(app)
 app.config['UPLOAD_FOLDER'] = "~/Área de trabalho/cripto-trabalho"
 app.config['MAX_CONTENT_PATH'] = "9090000"
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/encrypt/', methods=['POST'])
 def encrypt():
