@@ -2,6 +2,7 @@ import string
 import random
 import os
 import criptography
+import sys
 
 
 class SendCryptography:
@@ -18,10 +19,10 @@ class SendCryptography:
 
         print("Encriptando conteudo do arquivo...")
         retorno = cripto.encrypt(text)
-        file2 = open(retorno[0], "w+")  
+        file2 = open("arquivoSaida.txt", "w+")
         file2.write(retorno[1])
         print("Conteúdo Criptografado, Chave:")
-        for letter in key:
+        for letter in retorno[0]:
             print(letter, end ='')
 
         print ("\n")
@@ -30,8 +31,8 @@ class SendCryptography:
         print("Lendo arquivo...")
         ref_arquivo = open(arquivo, "r")
         arquivo2 = open("arquivoOriginal.txt", "w+")
-        cripto = SendCryptography()
-        if len(list(key)) == 26:
+        cripto = criptography.Cryptography()
+        if len(list(key)) != 26:
             print("Chave de tamanho inválido.")
             return
 
@@ -41,7 +42,7 @@ class SendCryptography:
 
         print("Decriptando conteudo do arquivo...")
         retorno = cripto.decrypt(text, key)
-        arquivo2.write(retorno)
+        arquivo2.write(retorno[1])
         return
     
 class Main:

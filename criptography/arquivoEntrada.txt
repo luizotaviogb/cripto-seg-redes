@@ -1,5 +1,2 @@
-Esse arquivo e um arquivo teste utilizado para o trabalho de criptografia da materia seguranca em redes de computadores.
-Teste.
-Estou escrevendo alguma coisa para testar.
-HEHEHEHE
-asddasasd
+eu sou o brey
+teste

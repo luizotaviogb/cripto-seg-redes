@@ -7,7 +7,8 @@ class Cryptography:
         return self.alg(text, None)
 
     def decrypt(self,text,key):
-        return self.alg(text, key)[1]
+        retorno = self.alg(text,key)
+        return retorno
 
     def alg(self, text, key):
         tam = 26
@@ -38,5 +39,7 @@ class Cryptography:
                     result = result + i.upper()
                     contador=1
                 j = j+1
+
+
         retorno = (key, result)
         return retorno
