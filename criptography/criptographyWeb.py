@@ -18,7 +18,7 @@ def encrypt():
     key = ""
     for i in ret[0]:
         key = key + i
-    return jsonify(key=chave, text=ret)
+    return jsonify(key=key, text=ret[1])
 
 @app.route('/decrypt/', methods=['POST'])
 def decrypt():
