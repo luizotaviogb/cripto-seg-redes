@@ -3,7 +3,7 @@ import string
 import random
 import os
 import criptography
-from flask import Flask, request, make_response, Response, send_file, jsonify, json
+from flask import Flask, request, make_response, Response, send_file, jsonify, json, render_template
 from werkzeug.utils import secure_filename
 from flask_cors import CORS, cross_origin
 
@@ -31,5 +31,9 @@ def decrypt():
     ret = cripto.decrypt(text, list(key))
     return jsonify(text=ret[1])
 
+@app.route('/')
+def root():
+    return render_template('index.html')
 
 app.run(debug = True)
+
