@@ -14,20 +14,19 @@ app.config['MAX_CONTENT_PATH'] = "9090000"
 def encrypt():
     text = request.json['text']
     cripto = criptography.Cryptography()
-    retorno = cripto.encrypt(text)
-    chave = ""
-    for i in retorno[0]:
-        chave = chave + i
-
-    return jsonify((chave, retorno[1]))
+    ret = cripto.encrypt(text)
+    key = ""
+    for i in ret[0]:
+        key = key + i
+    return jsonify(key=chave, text=ret)
 
 @app.route('/decrypt/', methods=['POST'])
 def decrypt():
     key = request.json['key']
     text = request.json['text']
     cripto = criptography.Cryptography()
-    retorno = cripto.decrypt(text, list(key))
-    return jsonify(retorno[1])
+    ret = cripto.decrypt(text, list(key))
+    return jsonify(text=ret[1])
 
 
 app.run(debug = True)
