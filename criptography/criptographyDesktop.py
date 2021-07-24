@@ -58,7 +58,7 @@ class SendCryptography:
                 key = input ('Informe a chave\n')
                 string_caminho = input('Qual o caminho da pasta onde esta o arquivo??\n')
                 string_arquivo = input('Qual o nome do arquivo?\n')
-                string_arquivo = string_caminho + '/' + string_arquivo
+                string_arquivo = basedir + string_caminho + '/' + string_arquivo
                 self.sendDecrypt(string_arquivo, key)
             elif opcao == '0':
                 sys.exit()

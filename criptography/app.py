@@ -12,8 +12,10 @@ class Main:
     time.sleep(2)
     os.system('cls' if os.name == 'nt' else 'clear')
     if opcao == '1':
-        subprocess.call("python criptographyDesktop.py")
+        subprocess.run(["python3", "criptographyDesktop.py"])
     elif opcao == '2':
-        subprocess.call("python criptographyWeb.py")
+        subprocess.run(["python3", "criptographyWeb.py"])
     elif opcao == '0':
         sys.exit()
+
+        subprocess.run(["ls", "-l"])
