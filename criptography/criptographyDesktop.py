@@ -1,6 +1,3 @@
-import string
-import random
-import os
 import criptography
 import sys
 
@@ -21,11 +18,10 @@ class SendCryptography:
         retorno = cripto.encrypt(text)
         file2 = open("arquivoSaida.txt", "w+")
         file2.write(retorno[1])
-        print("Conteúdo Criptografado, Chave:")
+        print("Conteúdo Criptografado com sucesso, Chave:")
         for letter in retorno[0]:
             print(letter, end ='')
-
-        print ("\n")
+        print("\nProcesso finalizado, basta abrir arquivoSaida.txt")
 
     def sendDecrypt(self,arquivo,key):
         print("Lendo arquivo...")
@@ -43,22 +39,25 @@ class SendCryptography:
         print("Decriptando conteudo do arquivo...")
         retorno = cripto.decrypt(text, key)
         arquivo2.write(retorno[1])
+        print("\nProcesso finalizado, basta abrir arquivoOriginal.txt")
         return
+
+    def init(self):
+        opcao = 1
+        while opcao != 0:
+
+            opcao = input ('0- Sair \n1- Criptografar \n2-Decriptografar \n')
+            
+            if opcao == '1':
+                string_arquivo = input('Qual o caminho completo até o arquivo que deseja criptografar?\n')
+                self.sendEncrypt(string_arquivo)
+            elif opcao == '2':
+                key = input ('Informe a chave\n')
+                string_arquivo = input('Qual o caminho completo até o arquivo que deseja descriptografar?\n')
+                self.sendDecrypt(string_arquivo, key)
+            elif opcao == '0':
+                sys.exit()
     
 class Main:
-
-    opcao = 1
-    while opcao != 0:
-
-        opcao = input ('0- Sair \n 1- Criptografar \n 2-Decriptografar \n')
-        string_arquivo = "arquivoEntrada.txt"
-        cripto = SendCryptography()
-        string_arquivo2 = "arquivoSaida.txt"
-
-        if opcao == '1':
-            print(cripto.sendEncrypt(string_arquivo))
-        elif opcao == '2':
-            key = input ('Informe a chave\n')
-            cripto.sendDecrypt(string_arquivo2, key)
-        elif opcao == '0':
-            sys.exit()
+    SendCryptography().init()
+    

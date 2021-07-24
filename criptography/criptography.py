@@ -1,6 +1,5 @@
 import string
 import random
-import os
 
 class Cryptography:
     def encrypt(self,text): 
