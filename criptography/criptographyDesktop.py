@@ -1,6 +1,7 @@
 import criptography
 import sys
-
+import os.path
+basedir = os.path.abspath('/')
 
 class SendCryptography:
     
@@ -49,15 +50,18 @@ class SendCryptography:
             opcao = input ('0- Sair \n1- Criptografar \n2-Decriptografar \n')
             
             if opcao == '1':
-                string_arquivo = input('Qual o caminho completo até o arquivo que deseja criptografar?\n')
+                string_caminho = input('Qual o caminho da pasta onde esta o arquivo??\n')
+                string_arquivo = input('Qual o nome do arquivo?\n')
+                string_arquivo = basedir + string_caminho + '/' + string_arquivo
                 self.sendEncrypt(string_arquivo)
             elif opcao == '2':
                 key = input ('Informe a chave\n')
-                string_arquivo = input('Qual o caminho completo até o arquivo que deseja descriptografar?\n')
+                string_caminho = input('Qual o caminho da pasta onde esta o arquivo??\n')
+                string_arquivo = input('Qual o nome do arquivo?\n')
+                string_arquivo = string_caminho + '/' + string_arquivo
                 self.sendDecrypt(string_arquivo, key)
             elif opcao == '0':
                 sys.exit()
     
 class Main:
     SendCryptography().init()
-    
