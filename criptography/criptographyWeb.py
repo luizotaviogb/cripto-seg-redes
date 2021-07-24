@@ -36,4 +36,4 @@ def root():
     return render_template('index.html')
 
 app.run(debug = True)
-
+print("Para iniciar a aplicação, basta acessar o endereço padrao da aplicação, http://localhost:5000/")

@@ -17,5 +17,3 @@ class Main:
         subprocess.run(["python3", "criptographyWeb.py"])
     elif opcao == '0':
         sys.exit()
-
-        subprocess.run(["ls", "-l"])

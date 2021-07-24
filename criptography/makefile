@@ -1,13 +1,13 @@
 
 
 execute: install
-	./app.py
+	python3 app.py
 
 execute.desktop: install
-	./criptographyDesktop.py
+	python3 criptographyDesktop.py
 
 execute.web: install
-	./criptographyWeb.py
+	python3 criptographyWeb.py
 	firefox -new-tab 'http://127.0.0.1:5000/'
 
 install:
